@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
+import 'pages/MapsPage.dart';
 import 'pages/RegistrationPage.dart';
 import 'pages/HomePage.dart';
 import 'pages/LoginPage.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         HomePage.id: (context) => homePage(),
         ProfilePage.id: (context) => profilePage(),
         ReportPage.id: (context) => reportPage(),
+        MapsPage.id: (context) => mapsPage(),
       },
     );
   }
