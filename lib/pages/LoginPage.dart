@@ -25,8 +25,8 @@ class _loginPageState extends State<loginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late bool _success;
-  late String _userEmail;
+  bool? _success;
+  String? _userEmail;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +99,9 @@ class _loginPageState extends State<loginPage> {
                 validator: (String? value) {
                   if (value!.isEmpty) {
                     return 'Please enter some text';
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 style: const TextStyle(
                   fontSize: 20,
@@ -121,11 +122,13 @@ class _loginPageState extends State<loginPage> {
               ),
               TextFormField(
                 controller: _passwordController,
+                obscureText: true,
                 validator: (String? value) {
                   if (value!.isEmpty) {
                     return 'Please enter some text';
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 decoration: const InputDecoration(
                   hintText: "Enter Password",
@@ -170,7 +173,7 @@ class _loginPageState extends State<loginPage> {
                     if (_formKey.currentState!.validate()) {
                       _signInWithEmailAndPassword();
                     }
-                    if (_success) Navigator.pushNamed(context, HomePage.id);
+                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),

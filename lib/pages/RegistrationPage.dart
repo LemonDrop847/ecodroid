@@ -26,8 +26,8 @@ class _registrationPageState extends State<registrationPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late bool _success;
-  late String _userEmail;
+  bool? _success;
+  String? _userEmail;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,8 +90,8 @@ class _registrationPageState extends State<registrationPage> {
                 controller: _emailController,
                 cursorColor: Colors.white,
                 decoration: const InputDecoration(
-                  hintText: "Enter Username",
-                  hintStyle: TextStyle(
+                  labelText: "Enter Email",
+                  labelStyle: TextStyle(
                     fontSize: 20,
                     color: Colors.grey,
                     fontWeight: FontWeight.w100,
@@ -111,7 +111,7 @@ class _registrationPageState extends State<registrationPage> {
                 },
               ),
               const SizedBox(
-                height: 40,
+                height: 10,
               ),
               const Text(
                 "Password",
@@ -130,8 +130,8 @@ class _registrationPageState extends State<registrationPage> {
                   return null;
                 },
                 decoration: const InputDecoration(
-                  hintText: "Enter Password",
-                  hintStyle: TextStyle(
+                  labelText: "Enter Password",
+                  labelStyle: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w100,
                     color: Colors.grey,
@@ -145,12 +145,12 @@ class _registrationPageState extends State<registrationPage> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                  hintText: "Re-Enter Password",
-                  hintStyle: TextStyle(
+                  labelText: "Re-Enter Password",
+                  labelStyle: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w100,
                     color: Colors.grey,
@@ -175,7 +175,7 @@ class _registrationPageState extends State<registrationPage> {
                     if (_formKey.currentState!.validate()) {
                       _register();
                     }
-                    if (_success) Navigator.pushNamed(context, HomePage.id);
+                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),
@@ -225,5 +225,12 @@ class _registrationPageState extends State<registrationPage> {
         _success = true;
       });
     }
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }
