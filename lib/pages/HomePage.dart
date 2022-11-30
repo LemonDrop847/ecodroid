@@ -33,11 +33,11 @@ class _homePageState extends State<homePage> {
       // ignore: prefer_const_constructors
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Color.fromARGB(0, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
+            const SizedBox(
               width: 40,
             ),
             Hero(
@@ -51,11 +51,11 @@ class _homePageState extends State<homePage> {
                 onPressed: () {
                   Navigator.pushNamed(context, ProfilePage.id);
                 },
-                icon: Icon(Icons.person))
+                icon: const Icon(Icons.person))
           ],
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },

@@ -35,142 +35,177 @@ class _profilePageState extends State<profilePage> {
             Navigator.pop(context);
           },
         ),
+        title: Hero(
+          tag: 'logo',
+          child: SizedBox(
+            height: 80.0,
+            width: 400,
+            child: Image.asset('assets/images/logo.png'),
+          ),
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: 'logo',
-              child: SizedBox(
-                height: 150.0,
-                width: 450,
-                child: Image.asset('assets/images/logosmall.png'),
-              ),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: SizedBox(
+                    width: 360,
+                    height: 360,
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/prp.png',
+                      ),
+                    ),
+                  ),
+                ),
+                Column(
+                  children: const [
+                    Text(
+                      "Name",
+                      style: TextStyle(
+                        fontSize: 35,
+                        color: Colors.white,
+                        fontFamily: 'Oswald',
+                      ),
+                    ),
+                    Text(
+                      "UserName",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontFamily: 'ProductSans',
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(
-              height: 20,
+              height: 60,
             ),
-            const Text(
-              "Welcome Back!",
-              style: TextStyle(
-                fontSize: 35,
-                color: Colors.white,
-                fontFamily: 'Oswald',
-              ),
-            ),
-            // const Text(
-            //   "Sign in to continue...",
-            //   style: TextStyle(fontSize: 18, color: Colors.grey),
-            // ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "User Name",
-              style: TextStyle(
-                fontSize: 23,
-                color: Colors.white,
-                fontFamily: 'Nunito',
-              ),
-            ),
-            const TextField(
-              cursorColor: Colors.white,
-              decoration: InputDecoration(
-                hintText: "Enter Username",
-                hintStyle: TextStyle(
-                  fontSize: 20,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w100,
-                  fontFamily: 'ProductSans',
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+                  decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        offset: const Offset(0, 9),
+                        blurRadius: 20,
+                        spreadRadius: 3)
+                  ]),
+                  child: const Text(
+                    "Points Earned:",
+                    style: TextStyle(fontSize: 16, fontFamily: 'Avenir'),
+                  ),
                 ),
               ),
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontFamily: 'ProductSans',
-              ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            const Text(
-              "Password",
-              style: TextStyle(
-                fontSize: 23,
-                color: Colors.white,
-                fontFamily: 'Nunito',
-              ),
-            ),
-            const TextField(
-              decoration: InputDecoration(
-                hintText: "Enter Password",
-                hintStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w100,
-                  color: Colors.grey,
-                  fontFamily: 'ProductSans',
-                ),
-              ),
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontFamily: 'ProductSans',
-              ),
-            ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 50,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Email:",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                  ),
+                ),
                 InkWell(
-                  onTap: () {},
-                  child: const Text(
-                    "Forgot Password?",
+                  child: Text(
+                    'random@ramdom.com ',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                )
+                ),
               ],
             ),
-            Center(
-              child: ButtonDecor(
-                width: 257,
-                height: 59,
-                title: 'Log In',
-                onPressed: () {
-                  Navigator.pushNamed(context, HomePage.id);
-                },
-                colour: const Color.fromARGB(255, 84, 160, 56),
-              ),
+            const SizedBox(
+              height: 40,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Log In Using: ',
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Phone No:",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 23,
                     color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'ProductSans',
+                    fontFamily: 'Nunito',
                   ),
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: Image.asset(
-                    'assets/images/googlelogo.png',
-                    width: 20,
-                    height: 20,
+                InkWell(
+                  child: Text(
+                    '123456789 ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: 'ProductSans',
+                    ),
                   ),
-                )
+                ),
               ],
-            )
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "City:",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                  ),
+                ),
+                InkWell(
+                  child: Text(
+                    'BBSR ',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: 'ProductSans',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 175,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {},
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+                  child: const Text(
+                    "Contact : lemondrop@gmail.com         Phone: 858585859",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: 'Avenir',
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
