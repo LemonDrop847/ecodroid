@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "452029143772",
+    "project_id": "ecodroid-42897",
+    "storage_bucket": "ecodroid-42897.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452029143772:android:6b29d1e8e5a25bcdf57219",
+        "android_client_info": {
+          "package_name": "com.example.ecodroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452029143772-2jgm8id9h5kv8j0akv4uitnuci1va8ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLJ4ySk0njyVn_3P5MgrLOdM2vOoinMRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452029143772-2jgm8id9h5kv8j0akv4uitnuci1va8ns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452029143772:android:a30785bb8e32f26df57219",
+        "android_client_info": {
+          "package_name": "com.example.soh_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452029143772-2jgm8id9h5kv8j0akv4uitnuci1va8ns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLJ4ySk0njyVn_3P5MgrLOdM2vOoinMRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452029143772-2jgm8id9h5kv8j0akv4uitnuci1va8ns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
