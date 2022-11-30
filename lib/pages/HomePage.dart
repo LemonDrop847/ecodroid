@@ -73,8 +73,6 @@ class _homePageState extends State<homePage> {
                 Navigator.pushNamed(context, MapsPage.id);
               },
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
                 decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 46, 140, 17),
                     boxShadow: [
@@ -107,11 +105,9 @@ class _homePageState extends State<homePage> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, MapsPage.id);
+                Navigator.pushNamed(context, ReportPage.id);
               },
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
                 decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 46, 140, 17),
                     boxShadow: [
