@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/buttondecor.dart';
-import 'HomePage.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String id = 'profile_page';

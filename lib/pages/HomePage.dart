@@ -27,6 +27,7 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
@@ -143,6 +144,7 @@ class _FireMapState extends State<FireMap> {
             myLocationEnabled: true,
             onMapCreated: _onMapCreated,
             compassEnabled: true,
+            markers: Set<Marker>.of(markers.values),
             onCameraMove: (CameraPosition cp) {
               LatLng center = cp.target;
               poslong = center.longitude;
@@ -163,23 +165,23 @@ class _FireMapState extends State<FireMap> {
 
   void _addPoint(double lat, double lng) {
     GeoFirePoint geoFirePoint = geo.point(latitude: lat, longitude: lng);
-    _firestore
-        .collection('locations')
-        .add({'name': 'random name', 'position': geoFirePoint.data}).then((_) {
+    _firestore.collection('locations').add(
+        {'name': 'Tree Location', 'position': geoFirePoint.data}).then((_) {
+      // ignore: avoid_print
       print('added ${geoFirePoint.hash} successfully');
     });
   }
 
   void _addMarker(double lat, double lng) {
     final id = MarkerId(lat.toString() + lng.toString());
-    final _marker = Marker(
+    final marker = Marker(
       markerId: id,
       position: LatLng(lat, lng),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
-      infoWindow: InfoWindow(title: 'latLng', snippet: '$lat,$lng'),
+      infoWindow: InfoWindow(title: 'Tree Location', snippet: '$lat,$lng'),
     );
     setState(() {
-      markers[id] = _marker;
+      markers[id] = marker;
     });
   }
 
