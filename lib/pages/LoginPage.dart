@@ -25,8 +25,8 @@ class _loginPageState extends State<loginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late bool _success;
-  late String _userEmail;
+  bool? _success;
+  String? _userEmail;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +86,7 @@ class _loginPageState extends State<loginPage> {
                 ),
               ),
               TextFormField(
+                controller: _emailController,
                 cursorColor: Colors.white,
                 decoration: const InputDecoration(
                   hintText: "Enter email",
@@ -99,8 +100,9 @@ class _loginPageState extends State<loginPage> {
                 validator: (String? value) {
                   if (value!.isEmpty) {
                     return 'Please enter some text';
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 style: const TextStyle(
                   fontSize: 20,
@@ -121,11 +123,14 @@ class _loginPageState extends State<loginPage> {
               ),
               TextFormField(
                 controller: _passwordController,
-                  validator: (String? value) {
+
+                  obscureText: true,
+                validator: (String? value) {
                   if (value!.isEmpty) {
                     return 'Please enter some text';
+                  } else {
+                    return null;
                   }
-                  return null;
                 },
                 decoration: const InputDecoration(
                   hintText: "Enter Password",
@@ -170,6 +175,7 @@ class _loginPageState extends State<loginPage> {
                     if (_formKey.currentState!.validate()) {
                       _signInWithEmailAndPassword();
                     }
+                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),
@@ -214,7 +220,6 @@ class _loginPageState extends State<loginPage> {
       setState(() {
         _success = true;
         _userEmail = user.email!;
-        Navigator.pushNamed(context, HomePage.id);
       });
     } else {
       setState(() {
