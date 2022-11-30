@@ -142,7 +142,9 @@ class _FireMapState extends State<FireMap> {
               zoom: 15,
             ),
             myLocationEnabled: true,
-            onMapCreated: _onMapCreated,
+            mapType: MapType.hybrid,
+            mapToolbarEnabled: true,
+            onMapCreated: onMapCreated,
             compassEnabled: true,
             markers: Set<Marker>.of(markers.values),
             onCameraMove: (CameraPosition cp) {
@@ -154,8 +156,9 @@ class _FireMapState extends State<FireMap> {
           Positioned(
             bottom: 50,
             left: 10,
-            child: IconButton(
-              icon: const Icon(Icons.pin_drop),
+            child: FloatingActionButton(
+              backgroundColor: Colors.green,
+              child: const Icon(Icons.pin_drop),
               onPressed: () => _addPoint(poslat!, poslong!),
             ),
           )
@@ -181,12 +184,13 @@ class _FireMapState extends State<FireMap> {
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
       infoWindow: InfoWindow(title: 'Tree Location', snippet: '$lat,$lng'),
     );
+
     setState(() {
       markers[id] = marker;
     });
   }
 
-  void _onMapCreated(GoogleMapController controller) {
+  void onMapCreated(GoogleMapController controller) {
     setState(() {
       _mapController = controller;
 //      _showHome();
