@@ -47,8 +47,9 @@ In our day-to-day life, we're facing too many problems related to our environmen
 <a href="https://firebase.google.com/" target="_blank"> 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" width="40" height="40"/> 
 </a>
-<a href="https://www.tensorflow.org/" target="_blank"></a>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" width=40px/>
+<a href="https://www.tensorflow.org/" target="_blank">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Tensorflow" width="40" height="40"/>
+</a>
 
 
 ## Getting Started

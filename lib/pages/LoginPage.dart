@@ -123,7 +123,8 @@ class _loginPageState extends State<loginPage> {
               ),
               TextFormField(
                 controller: _passwordController,
-                obscureText: true,
+
+                  obscureText: true,
                 validator: (String? value) {
                   if (value!.isEmpty) {
                     return 'Please enter some text';
