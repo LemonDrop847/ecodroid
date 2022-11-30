@@ -127,7 +127,7 @@ class _loginPageState extends State<loginPage> {
                   }
                   return null;
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Enter Password",
                   hintStyle: TextStyle(
                     fontSize: 20,
@@ -136,7 +136,7 @@ class _loginPageState extends State<loginPage> {
                     fontFamily: 'ProductSans',
                   ),
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                   fontFamily: 'ProductSans',
@@ -170,8 +170,6 @@ class _loginPageState extends State<loginPage> {
                     if (_formKey.currentState!.validate()) {
                       _signInWithEmailAndPassword();
                     }
-
-                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),
@@ -216,6 +214,7 @@ class _loginPageState extends State<loginPage> {
       setState(() {
         _success = true;
         _userEmail = user.email!;
+        Navigator.pushNamed(context, HomePage.id);
       });
     } else {
       setState(() {

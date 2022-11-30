@@ -175,7 +175,6 @@ class _registrationPageState extends State<registrationPage> {
                     if (_formKey.currentState!.validate()) {
                       _register();
                     }
-                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),
@@ -219,6 +218,7 @@ class _registrationPageState extends State<registrationPage> {
       setState(() {
         _success = true;
         _userEmail = user.email!;
+        Navigator.pushNamed(context, HomePage.id);
       });
     } else {
       setState(() {
