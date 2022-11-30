@@ -152,12 +152,13 @@ class _FireMapState extends State<FireMap> {
             },
           ),
           Positioned(
-              bottom: 50,
-              left: 10,
-              child: IconButton(
-                icon: const Icon(Icons.pin_drop),
-                onPressed: () => _addPoint(poslat!, poslong!),
-              ))
+            bottom: 50,
+            left: 10,
+            child: IconButton(
+              icon: const Icon(Icons.pin_drop),
+              onPressed: () => _addPoint(poslat!, poslong!),
+            ),
+          )
         ],
       ),
     );

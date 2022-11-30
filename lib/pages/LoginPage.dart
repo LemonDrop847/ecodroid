@@ -86,6 +86,7 @@ class _loginPageState extends State<loginPage> {
                 ),
               ),
               TextFormField(
+                controller: _emailController,
                 cursorColor: Colors.white,
                 decoration: const InputDecoration(
                   hintText: "Enter email",
