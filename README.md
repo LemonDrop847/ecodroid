@@ -1,4 +1,4 @@
-# ecodroid
+# EcoDroid
 
 A new Flutter project.
 
