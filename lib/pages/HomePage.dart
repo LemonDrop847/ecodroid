@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:geoflutterfire2/geoflutterfire2.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../components/buttondecor.dart';
 import 'ProfilePage.dart';
+import 'ReportPage.dart';
 
 class HomePage extends StatelessWidget {
   static const String id = 'home_page';
@@ -77,7 +77,7 @@ class _homePageState extends State<homePage> {
                 height: 59,
                 title: 'Report',
                 onPressed: () {
-                  Navigator.pushNamed(context, HomePage.id);
+                  Navigator.pushNamed(context, ReportPage.id);
                 },
                 colour: const Color.fromARGB(255, 84, 160, 56),
               ),
@@ -162,6 +162,7 @@ class _FireMapState extends State<FireMap> {
               onPressed: () => _addPoint(poslat!, poslong!),
             ),
           ),
+          const Center(child: Icon(Icons.add)),
         ],
       ),
     );

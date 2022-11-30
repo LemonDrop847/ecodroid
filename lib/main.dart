@@ -7,6 +7,7 @@ import 'pages/HomePage.dart';
 import 'pages/LoginPage.dart';
 import 'pages/Onboarding.dart';
 import 'pages/ProfilePage.dart';
+import 'pages/ReportPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         RegistrationPage.id: (context) => registrationPage(),
         HomePage.id: (context) => homePage(),
         ProfilePage.id: (context) => profilePage(),
+        ReportPage.id: (context) => reportPage(),
       },
     );
   }
