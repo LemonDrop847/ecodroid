@@ -137,6 +137,7 @@ class _FireMapState extends State<FireMap> {
       child: Stack(
         children: [
           GoogleMap(
+            onMapCreated: onMapCreated,
             initialCameraPosition: const CameraPosition(
               target: LatLng(20.27774, 85.77761),
               zoom: 15,
@@ -144,7 +145,6 @@ class _FireMapState extends State<FireMap> {
             myLocationEnabled: true,
             mapType: MapType.hybrid,
             mapToolbarEnabled: true,
-            onMapCreated: onMapCreated,
             compassEnabled: true,
             markers: Set<Marker>.of(markers.values),
             onCameraMove: (CameraPosition cp) {
@@ -161,33 +161,10 @@ class _FireMapState extends State<FireMap> {
               child: const Icon(Icons.pin_drop),
               onPressed: () => _addPoint(poslat!, poslong!),
             ),
-          )
+          ),
         ],
       ),
     );
-  }
-
-  void _addPoint(double lat, double lng) {
-    GeoFirePoint geoFirePoint = geo.point(latitude: lat, longitude: lng);
-    _firestore.collection('locations').add(
-        {'name': 'Tree Location', 'position': geoFirePoint.data}).then((_) {
-      // ignore: avoid_print
-      print('added ${geoFirePoint.hash} successfully');
-    });
-  }
-
-  void _addMarker(double lat, double lng) {
-    final id = MarkerId(lat.toString() + lng.toString());
-    final marker = Marker(
-      markerId: id,
-      position: LatLng(lat, lng),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
-      infoWindow: InfoWindow(title: 'Tree Location', snippet: '$lat,$lng'),
-    );
-
-    setState(() {
-      markers[id] = marker;
-    });
   }
 
   void onMapCreated(GoogleMapController controller) {
@@ -201,11 +178,43 @@ class _FireMapState extends State<FireMap> {
     });
   }
 
-  void _updateMarkers(List<DocumentSnapshot> documentList) {
-    for (var document in documentList) {
-      Map<String, dynamic>? snapData = document.data() as Map<String, dynamic>?;
-      final GeoPoint point = snapData!['position']['geopoint'];
-      _addMarker(point.latitude, point.longitude);
+  void _addPoint(double lat, double lng) {
+    GeoFirePoint geoFirePoint = geo.point(latitude: lat, longitude: lng);
+    _firestore
+        .collection('locations')
+        .add({'longitude': lng, 'latitude': lat}).then((_) {
+      // ignore: avoid_print
+      print('added ${geoFirePoint.hash} successfully');
+    });
+  }
+
+  void _addMarker(double lat, double lng) {
+    final id = MarkerId(lat.toString() + lng.toString());
+    final marker = Marker(
+      markerId: id,
+      position: LatLng(lat, lng),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      infoWindow: InfoWindow(title: 'Tree Location', snippet: '$lat,$lng'),
+    );
+
+    setState(() {
+      markers[id] = marker;
+    });
+  }
+
+  final CollectionReference _collectionRef =
+      FirebaseFirestore.instance.collection('locations');
+
+  Future<void> _updateMarkers(List<DocumentSnapshot> documentList) async {
+    QuerySnapshot querySnapshot = await _collectionRef.get();
+    final allData = querySnapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+    for (int i = 0; i < allData.length; i++) {
+      double latitude = allData[i].values.first;
+      double longitude = allData[i].values.last;
+      _addMarker(latitude, longitude);
     }
   }
 }
