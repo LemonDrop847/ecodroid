@@ -175,7 +175,6 @@ class _loginPageState extends State<loginPage> {
                     if (_formKey.currentState!.validate()) {
                       _signInWithEmailAndPassword();
                     }
-                    Navigator.pushNamed(context, HomePage.id);
                   },
                   colour: const Color.fromARGB(255, 84, 160, 56),
                 ),
@@ -220,6 +219,7 @@ class _loginPageState extends State<loginPage> {
       setState(() {
         _success = true;
         _userEmail = user.email!;
+        Navigator.pushNamed(context, HomePage.id);
       });
     } else {
       setState(() {
