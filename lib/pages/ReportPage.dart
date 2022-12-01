@@ -35,6 +35,7 @@ class _reportPageState extends State<reportPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseFirestore db = FirebaseFirestore.instance;
   int? upoints = 0;
+  String? uemail = '';
 
   Future getUser() async {
     await FirebaseFirestore.instance
@@ -44,6 +45,7 @@ class _reportPageState extends State<reportPage> {
         .then((snapshot) async {
       if (snapshot.exists) {
         setState(() {
+          uemail = snapshot.data()!["email"];
           upoints = snapshot.data()!["points"];
         });
       }
@@ -97,41 +99,41 @@ class _reportPageState extends State<reportPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Email",
-                style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontFamily: 'Nunito',
-                ),
-              ),
-              TextFormField(
-                controller: _emailController,
-                cursorColor: Colors.white,
-                decoration: const InputDecoration(
-                  labelText: "Enter Email",
-                  labelStyle: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: 'ProductSans',
-                  ),
-                ),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'ProductSans',
-                ),
-                validator: (String? value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // const Text(
+              //   "Email",
+              //   style: TextStyle(
+              //     fontSize: 23,
+              //     color: Colors.white,
+              //     fontFamily: 'Nunito',
+              //   ),
+              // ),
+              // TextFormField(
+              //   controller: _emailController,
+              //   cursorColor: Colors.white,
+              //   decoration: const InputDecoration(
+              //     labelText: "Enter Email",
+              //     labelStyle: TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.grey,
+              //       fontWeight: FontWeight.w100,
+              //       fontFamily: 'ProductSans',
+              //     ),
+              //   ),
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.white,
+              //     fontFamily: 'ProductSans',
+              //   ),
+              //   validator: (String? value) {
+              //     if (value!.isEmpty) {
+              //       return 'Please enter some text';
+              //     }
+              //     return null;
+              //   },
+              // ),
               const SizedBox(
                 height: 10,
               ),
@@ -206,7 +208,7 @@ class _reportPageState extends State<reportPage> {
                   title: 'Send Report',
                   onPressed: () {
                     _firestore.collection('reports').add({
-                      'email': _emailController.text,
+                      'email': uemail,
                       'title': _titleController.text,
                       'description': _descriptionController.text
                     }).then((_) {
