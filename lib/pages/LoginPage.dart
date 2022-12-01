@@ -44,164 +44,165 @@ class _loginPageState extends State<loginPage> {
           },
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Hero(
-                tag: 'logo',
-                child: SizedBox(
-                  height: 150.0,
-                  width: 450,
-                  child: Image.asset('assets/images/logosmall.png'),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Welcome Back!",
-                style: TextStyle(
-                  fontSize: 35,
-                  color: Colors.white,
-                  fontFamily: 'Oswald',
-                ),
-              ),
-              // const Text(
-              //   "Sign in to continue...",
-              //   style: TextStyle(fontSize: 18, color: Colors.grey),
-              // ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Email Id",
-                style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontFamily: 'Nunito',
-                ),
-              ),
-              TextFormField(
-                controller: _emailController,
-                cursorColor: Colors.white,
-                decoration: const InputDecoration(
-                  hintText: "Enter email",
-                  hintStyle: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w100,
-                    fontFamily: 'ProductSans',
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Hero(
+                  tag: 'logo',
+                  child: SizedBox(
+                    height: 150.0,
+                    width: 450,
+                    child: Image.asset('assets/images/logosmall.png'),
                   ),
                 ),
-                validator: (String? value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  } else {
-                    return null;
-                  }
-                },
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'ProductSans',
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              const Text(
-                "Password",
-                style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontFamily: 'Nunito',
-                ),
-              ),
-              TextFormField(
-                controller: _passwordController,
-
-                  obscureText: true,
-                validator: (String? value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  } else {
-                    return null;
-                  }
-                },
-                decoration: const InputDecoration(
-                  hintText: "Enter Password",
-                  hintStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w100,
-                    color: Colors.grey,
-                    fontFamily: 'ProductSans',
+                const Text(
+                  "Welcome Back!",
+                  style: TextStyle(
+                    fontSize: 35,
+                    color: Colors.white,
+                    fontFamily: 'Oswald',
                   ),
                 ),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'ProductSans',
+                // const Text(
+                //   "Sign in to continue...",
+                //   style: TextStyle(fontSize: 18, color: Colors.grey),
+                // ),
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Text(
-                      "Forgot Password?",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontFamily: 'ProductSans',
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Center(
-                child: ButtonDecor(
-                  width: 257,
-                  height: 59,
-                  title: 'Log In',
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      _signInWithEmailAndPassword();
-                    }
-                  },
-                  colour: const Color.fromARGB(255, 84, 160, 56),
+                const Text(
+                  "Email Id",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Log In Using: ',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
+                TextFormField(
+                  controller: _emailController,
+                  cursorColor: Colors.white,
+                  decoration: const InputDecoration(
+                    hintText: "Enter email",
+                    hintStyle: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w100,
                       fontFamily: 'ProductSans',
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Image.asset(
-                      'assets/images/googlelogo.png',
-                      width: 20,
-                      height: 20,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    } else {
+                      return null;
+                    }
+                  },
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'ProductSans',
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                  "Password",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                  ),
+                ),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: const InputDecoration(
+                    hintText: "Enter Password",
+                    hintStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.grey,
+                      fontFamily: 'ProductSans',
                     ),
-                  )
-                ],
-              )
-            ],
+                  ),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'ProductSans',
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontFamily: 'ProductSans',
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Center(
+                  child: ButtonDecor(
+                    width: 257,
+                    height: 59,
+                    title: 'Log In',
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        _signInWithEmailAndPassword();
+                      }
+                    },
+                    colour: const Color.fromARGB(255, 84, 160, 56),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Log In Using: ',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'ProductSans',
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Image.asset(
+                        'assets/images/googlelogo.png',
+                        width: 20,
+                        height: 20,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

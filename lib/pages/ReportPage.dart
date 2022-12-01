@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'ProfilePage.dart';
@@ -6,10 +7,10 @@ import 'package:flutter/material.dart';
 import '../components/buttondecor.dart';
 import 'HomePage.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
-
 class ReportPage extends StatelessWidget {
   static const String id = 'report_page';
+
+  const ReportPage({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,6 +31,31 @@ class _reportPageState extends State<reportPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  int? upoints = 0;
+
+  Future getUser() async {
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .get()
+        .then((snapshot) async {
+      if (snapshot.exists) {
+        setState(() {
+          upoints = snapshot.data()!["points"];
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -184,6 +210,11 @@ class _reportPageState extends State<reportPage> {
                       'title': _titleController.text,
                       'description': _descriptionController.text
                     }).then((_) {
+                      int points;
+                      FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(auth.currentUser!.uid)
+                          .update({'points': upoints! + 10});
                       // ignore: avoid_print
                       print(
                           'added report from ${_emailController.text} successfully');
