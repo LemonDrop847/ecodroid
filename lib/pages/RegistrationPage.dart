@@ -33,8 +33,8 @@ class _registrationPageState extends State<registrationPage> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
+        elevation: 1,
+        backgroundColor: Color.fromARGB(49, 91, 91, 91),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,

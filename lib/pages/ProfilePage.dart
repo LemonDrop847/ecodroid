@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -17,13 +18,23 @@ class profilePage extends StatefulWidget {
 }
 
 class _profilePageState extends State<profilePage> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  User? user;
+  String? uemail;
+  Future<void> getUser() async {
+    user = auth.currentUser!;
+    final uid = user!.displayName;
+    print(uid.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
+    getUser();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
+        elevation: 1,
+        backgroundColor: Color.fromARGB(49, 91, 91, 91),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -50,10 +61,9 @@ class _profilePageState extends State<profilePage> {
             Row(
               children: [
                 CircleAvatar(
+                  radius: 40,
                   backgroundColor: Colors.transparent,
                   child: SizedBox(
-                    width: 360,
-                    height: 360,
                     child: ClipOval(
                       child: Image.asset(
                         'assets/images/prp.png',
@@ -61,14 +71,17 @@ class _profilePageState extends State<profilePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 20,
+                ),
                 Column(
                   children: const [
                     Text(
-                      "Name",
+                      'Name',
                       style: TextStyle(
                         fontSize: 35,
                         color: Colors.white,
-                        fontFamily: 'Oswald',
+                        fontFamily: 'Avenir',
                       ),
                     ),
                     Text(

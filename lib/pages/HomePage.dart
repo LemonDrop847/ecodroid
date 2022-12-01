@@ -34,8 +34,8 @@ class _homePageState extends State<homePage> {
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
       // ignore: prefer_const_constructors
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        elevation: 1,
+        backgroundColor: Color.fromARGB(49, 91, 91, 91),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -68,27 +68,122 @@ class _homePageState extends State<homePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, MapsPage.id);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      color: const Color.fromARGB(255, 46, 140, 17),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          offset: const Offset(0, 9),
+                          blurRadius: 20,
+                          spreadRadius: 3,
+                        )
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Image.asset('assets/images/maplogo.png'),
+                        ),
+                        const Center(
+                          child: Text(
+                            textDirection: TextDirection.ltr,
+                            'Map Locations',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: 'Oswald',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, ReportPage.id);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      color: const Color.fromARGB(255, 46, 140, 17),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          offset: const Offset(0, 9),
+                          blurRadius: 20,
+                          spreadRadius: 3,
+                        )
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                            height: 100,
+                            width: 100,
+                            child: Image.asset('assets/images/report.png')),
+                        const Center(
+                          child: Text(
+                            'Report Issues | Problems',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontFamily: 'Oswald',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, MapsPage.id);
+                Navigator.pushNamed(context, ReportPage.id);
               },
               child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 46, 140, 17),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        offset: const Offset(0, 9),
-                        blurRadius: 20,
-                        spreadRadius: 3,
-                      )
-                    ]),
-                child: Stack(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  color: const Color.fromARGB(255, 46, 140, 17),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(0, 9),
+                      blurRadius: 20,
+                      spreadRadius: 3,
+                    )
+                  ],
+                ),
+                child: Column(
                   children: [
-                    Image.asset('assets/images/maplogo.png'),
+                    SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Image.asset('assets/images/rewards.png')),
                     const Center(
                       child: Text(
-                        'Map Locations',
+                        'Points Shop Rewards',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
@@ -101,33 +196,85 @@ class _homePageState extends State<homePage> {
               ),
             ),
             const SizedBox(
-              height: 10.0,
+              height: 50,
             ),
             InkWell(
               onTap: () {
                 Navigator.pushNamed(context, ReportPage.id);
               },
               child: Container(
+                width: 400,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 46, 140, 17),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        offset: const Offset(0, 9),
-                        blurRadius: 20,
-                        spreadRadius: 3,
-                      )
-                    ]),
-                child: Stack(
-                  children: [
-                    Image.asset('assets/images/report.png'),
-                    const Center(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  color: const Color.fromARGB(255, 46, 140, 17),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(0, 9),
+                      blurRadius: 20,
+                      spreadRadius: 3,
+                    )
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      'Tasks Due',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontFamily: 'Avenir',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromARGB(255, 52, 113, 62),
                       child: Text(
-                        'Report Issues | Problems',
+                        'Plant A Tree',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
-                          fontFamily: 'Oswald',
+                          fontFamily: 'Itim',
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromARGB(255, 52, 113, 62),
+                      child: Text(
+                        'Report Status of a Particular Plant',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontFamily: 'Itim',
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromARGB(255, 52, 113, 62),
+                      child: Text(
+                        'Participate in a Plantation Drive',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontFamily: 'Itim',
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                    ),
+                    Card(
+                      color: Color.fromARGB(255, 52, 113, 62),
+                      child: Text(
+                        'Refer Friends',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontFamily: 'Itim',
+                          fontWeight: FontWeight.w200,
                         ),
                       ),
                     ),

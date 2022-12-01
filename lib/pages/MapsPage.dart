@@ -32,8 +32,8 @@ class _mapsPageState extends State<mapsPage> {
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
       // ignore: prefer_const_constructors
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+        elevation: 1,
+        backgroundColor: Color.fromARGB(49, 91, 91, 91),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -61,28 +61,21 @@ class _mapsPageState extends State<mapsPage> {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            FireMap(),
-            SizedBox(
-              height: 10.0,
-            ),
-            // Center(
-            //   child: ButtonDecor(
-            //     width: 257,
-            //     height: 59,
-            //     title: 'Report',
-            //     onPressed: () {
-            //       Navigator.pushNamed(context, ReportPage.id);
-            //     },
-            //     colour: const Color.fromARGB(255, 84, 160, 56),
-            //   ),
-            // ),
-          ],
-        ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: FireMap(),
+
+        // Center(
+        //   child: ButtonDecor(
+        //     width: 257,
+        //     height: 59,
+        //     title: 'Report',
+        //     onPressed: () {
+        //       Navigator.pushNamed(context, ReportPage.id);
+        //     },
+        //     colour: const Color.fromARGB(255, 84, 160, 56),
+        //   ),
+        // ),
       ),
     );
   }
@@ -132,76 +125,83 @@ class _FireMapState extends State<FireMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: 625,
-                padding: EdgeInsets.all(10),
-                child: GoogleMap(
-                  onMapCreated: onMapCreated,
-                  initialCameraPosition: const CameraPosition(
-                    target: LatLng(20.27774, 85.77761),
-                    zoom: 15,
-                  ),
-                  myLocationEnabled: true,
-                  mapType: MapType.hybrid,
-                  mapToolbarEnabled: true,
-                  compassEnabled: true,
-                  markers: Set<Marker>.of(markers.values),
-                  onCameraMove: (CameraPosition cp) {
-                    LatLng center = cp.target;
-                    poslong = center.longitude;
-                    poslat = center.latitude;
-                  },
+    return Column(
+      children: [
+        Stack(
+          children: [
+            Container(
+              height: 624,
+              width: 450,
+              padding: const EdgeInsets.all(10),
+              child: GoogleMap(
+                onMapCreated: onMapCreated,
+                initialCameraPosition: const CameraPosition(
+                  target: LatLng(20.27774, 85.77761),
+                  zoom: 15,
                 ),
+                myLocationEnabled: true,
+                mapType: MapType.hybrid,
+                mapToolbarEnabled: true,
+                compassEnabled: true,
+                markers: Set<Marker>.of(markers.values),
+                onCameraMove: (CameraPosition cp) {
+                  LatLng center = cp.target;
+                  poslong = center.longitude;
+                  poslat = center.latitude;
+                },
               ),
-              const Center(
-                child: Icon(Icons.add),
-              ),
-            ],
-          ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            left: 10,
-            child: InkWell(
-              onTap: () => _addPoint(poslat!, poslong!),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 46, 140, 17),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          offset: const Offset(0, 9),
-                          blurRadius: 20,
-                          spreadRadius: 3)
-                    ]),
-                child: Row(
-                  children: const [
-                    Icon(
-                      Icons.pin_drop,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      "Add Sapling Position",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontFamily: 'Oswald',
-                      ),
-                    ),
-                  ],
+            ),
+            const Positioned(
+              top: 297,
+              left: 170,
+              child: Center(
+                child: Icon(
+                  size: 30,
+                  Icons.add,
+                  color: Colors.white,
                 ),
               ),
             ),
+          ],
+        ),
+        Positioned(
+          bottom: 10,
+          right: 10,
+          left: 10,
+          child: InkWell(
+            onTap: () => _addPoint(poslat!, poslong!),
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 46, 140, 17),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        offset: const Offset(0, 9),
+                        blurRadius: 20,
+                        spreadRadius: 3)
+                  ]),
+              child: Row(
+                children: const [
+                  Icon(
+                    Icons.pin_drop,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Add Sapling Position",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontFamily: 'Oswald',
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
