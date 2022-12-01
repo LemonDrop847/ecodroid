@@ -51,7 +51,6 @@ In our day-to-day life, we're facing too many problems related to our environmen
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Tensorflow" width="40" height="40"/>
 </a>
 
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -64,3 +63,54 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Working & Usage
+
+In order to get started contributing/building the flutter project, first get Flutter (this project was made with version 3.0.5).  
+Clone this Repository
+
+```
+git clone LemonDrop847/ecodroid
+```
+
+Get packages
+
+```
+flutter pub get
+```
+
+Build and run main.dart.
+
+## What we learned 🤓
+
+We are a group of developers who are open to learning and experimenting with new tech. During this hackathon we learnt -
+
+1. Using ML models in a flutter App.
+2. Usage of cloud storage with database integrations within flutter.
+3. Learnt about more exciting upcoming and already existing face recognition and detection tech.
+
+## Problems we ran Into
+
+1. Most ML models dont seem to work with flutter and/or are outdated.
+2. Flutter firebase packages dont go well together. A loophole was dont to fix this but this is by no means a permanent solution.
+3. Flutter, beacuse of being new lacks a lot of documentation on very specific topics.
+
+## Issues
+
+Feel free to submit issues and enhancement requests.
+Please use our links to contact us.
+
+## Contributing
+
+Contributions are always welcome!
+
+Please refer to each project's style and contribution guidelines for submitting patches and additions. In general, we follow the "fork-and-pull" Git workflow.
+
+- Fork the repo on GitHub
+- Clone the project to your own machine
+- Commit changes to your own branch
+- Push your work back up to your fork
+- Submit a Pull request so that we can review your changes
+  NOTE: Be sure to merge the latest from "upstream" before making a pull request!
+
+Please adhere to this project's `code of conduct`.
