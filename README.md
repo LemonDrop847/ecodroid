@@ -51,22 +51,9 @@ In our day-to-day life, we're facing too many problems related to our environmen
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Tensorflow" width="40" height="40"/>
 </a>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 ## Working & Usage
 
-In order to get started contributing/building the flutter project, first get Flutter (this project was made with version 3.0.5).  
+In order to get started contributing/building the flutter project, first get Flutter (this project was made with version 3.3.9).  
 Clone this Repository
 
 ```
