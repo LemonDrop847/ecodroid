@@ -334,6 +334,7 @@ class _registrationPageState extends State<registrationPage> {
           'created': Timestamp.now(),
           'points': 0,
         }).then((_) {
+          // ignore: avoid_print
           print('${_nameController.text} added succesfully');
         });
         _signInWithEmailAndPassword();

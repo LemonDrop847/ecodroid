@@ -224,6 +224,9 @@ class _loginPageState extends State<loginPage> {
       });
     } else {
       setState(() {
+        const SnackBar(
+          content: Text('Incorrect Email or Password'),
+        );
         _success = false;
       });
     }

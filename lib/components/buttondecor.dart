@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ButtonDecor extends StatelessWidget {
-  ButtonDecor({
+  const ButtonDecor({
     Key? key,
     required this.title,
     required this.colour,
@@ -19,7 +19,7 @@ class ButtonDecor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
         elevation: 5.0,
         color: colour,
@@ -30,7 +30,7 @@ class ButtonDecor extends StatelessWidget {
           minWidth: width,
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: 'Oswald',
               fontSize: 18,

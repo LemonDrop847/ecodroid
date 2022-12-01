@@ -1,13 +1,9 @@
 import 'package:ecodroid/pages/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:geoflutterfire2/geoflutterfire2.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../components/buttondecor.dart';
-import '../services/maps.dart';
 
 class MapsPage extends StatelessWidget {
   static const String id = 'maps_page';

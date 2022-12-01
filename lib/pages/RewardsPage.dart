@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'MapsPage.dart';
 import 'ProfilePage.dart';
 import 'ReportPage.dart';
 
 class RewardsPage extends StatelessWidget {
   static const String id = 'rewards_page';
+
+  const RewardsPage({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,7 +66,7 @@ class _rewardsPageState extends State<rewardsPage> {
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Color.fromARGB(255, 68, 121, 51),
+              color: const Color.fromARGB(255, 68, 121, 51),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -106,7 +107,7 @@ class _rewardsPageState extends State<rewardsPage> {
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Color.fromARGB(255, 68, 121, 51),
+              color: const Color.fromARGB(255, 68, 121, 51),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),
@@ -188,7 +189,7 @@ class _rewardsPageState extends State<rewardsPage> {
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(20)),
-              color: Color.fromARGB(255, 68, 121, 51),
+              color: const Color.fromARGB(255, 68, 121, 51),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.2),

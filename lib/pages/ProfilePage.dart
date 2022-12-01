@@ -5,9 +5,11 @@ import 'package:intl/intl.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String id = 'profile_page';
+
+  const ProfilePage({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: profilePage(),
     );
@@ -15,6 +17,8 @@ class ProfilePage extends StatelessWidget {
 }
 
 class profilePage extends StatefulWidget {
+  const profilePage({super.key});
+
   @override
   _profilePageState createState() => _profilePageState();
 }
