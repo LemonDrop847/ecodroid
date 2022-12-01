@@ -95,138 +95,140 @@ class _reportPageState extends State<reportPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // const Text(
-              //   "Email",
-              //   style: TextStyle(
-              //     fontSize: 23,
-              //     color: Colors.white,
-              //     fontFamily: 'Nunito',
-              //   ),
-              // ),
-              // TextFormField(
-              //   controller: _emailController,
-              //   cursorColor: Colors.white,
-              //   decoration: const InputDecoration(
-              //     labelText: "Enter Email",
-              //     labelStyle: TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.grey,
-              //       fontWeight: FontWeight.w100,
-              //       fontFamily: 'ProductSans',
-              //     ),
-              //   ),
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.white,
-              //     fontFamily: 'ProductSans',
-              //   ),
-              //   validator: (String? value) {
-              //     if (value!.isEmpty) {
-              //       return 'Please enter some text';
-              //     }
-              //     return null;
-              //   },
-              // ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Subject",
-                style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontFamily: 'Nunito',
+        child: SingleChildScrollView(
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                // const Text(
+                //   "Email",
+                //   style: TextStyle(
+                //     fontSize: 23,
+                //     color: Colors.white,
+                //     fontFamily: 'Nunito',
+                //   ),
+                // ),
+                // TextFormField(
+                //   controller: _emailController,
+                //   cursorColor: Colors.white,
+                //   decoration: const InputDecoration(
+                //     labelText: "Enter Email",
+                //     labelStyle: TextStyle(
+                //       fontSize: 20,
+                //       color: Colors.grey,
+                //       fontWeight: FontWeight.w100,
+                //       fontFamily: 'ProductSans',
+                //     ),
+                //   ),
+                //   style: const TextStyle(
+                //     fontSize: 20,
+                //     color: Colors.white,
+                //     fontFamily: 'ProductSans',
+                //   ),
+                //   validator: (String? value) {
+                //     if (value!.isEmpty) {
+                //       return 'Please enter some text';
+                //     }
+                //     return null;
+                //   },
+                // ),
+                const SizedBox(
+                  height: 10,
                 ),
-              ),
-              TextFormField(
-                controller: _titleController,
-                validator: (String? value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(
-                  labelText: "Enter A Problem",
-                  labelStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w100,
-                    color: Colors.grey,
-                    fontFamily: 'ProductSans',
+                const Text(
+                  "Subject",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
                   ),
                 ),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'ProductSans',
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                "Description",
-                style: TextStyle(
-                  fontSize: 23,
-                  color: Colors.white,
-                  fontFamily: 'Nunito',
-                ),
-              ),
-              TextFormField(
-                controller: _descriptionController,
-                minLines: 10,
-                maxLines: 15,
-                decoration: const InputDecoration(
-                  labelText: "Describe the Problem Here",
-                  labelStyle: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w100,
-                    color: Colors.grey,
-                    fontFamily: 'ProductSans',
-                  ),
-                ),
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontFamily: 'ProductSans',
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: ButtonDecor(
-                  width: 257,
-                  height: 59,
-                  title: 'Send Report',
-                  onPressed: () {
-                    _firestore.collection('reports').add({
-                      'email': uemail,
-                      'title': _titleController.text,
-                      'description': _descriptionController.text
-                    }).then((_) {
-                      int points;
-                      FirebaseFirestore.instance
-                          .collection('users')
-                          .doc(auth.currentUser!.uid)
-                          .update({'points': upoints! + 10});
-                      // ignore: avoid_print
-                      print(
-                          'added report from ${_emailController.text} successfully');
-                    });
-                    Navigator.pushNamed(context, HomePage.id);
+                TextFormField(
+                  controller: _titleController,
+                  validator: (String? value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
                   },
-                  colour: const Color.fromARGB(255, 84, 160, 56),
+                  decoration: const InputDecoration(
+                    labelText: "Enter A Problem",
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.grey,
+                      fontFamily: 'ProductSans',
+                    ),
+                  ),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'ProductSans',
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Description",
+                  style: TextStyle(
+                    fontSize: 23,
+                    color: Colors.white,
+                    fontFamily: 'Nunito',
+                  ),
+                ),
+                TextFormField(
+                  controller: _descriptionController,
+                  minLines: 10,
+                  maxLines: 15,
+                  decoration: const InputDecoration(
+                    labelText: "Describe the Problem Here",
+                    labelStyle: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.grey,
+                      fontFamily: 'ProductSans',
+                    ),
+                  ),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontFamily: 'ProductSans',
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: ButtonDecor(
+                    width: 257,
+                    height: 59,
+                    title: 'Send Report',
+                    onPressed: () {
+                      _firestore.collection('reports').add({
+                        'email': uemail,
+                        'title': _titleController.text,
+                        'description': _descriptionController.text
+                      }).then((_) {
+                        int points;
+                        FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(auth.currentUser!.uid)
+                            .update({'points': upoints! + 10});
+                        // ignore: avoid_print
+                        print(
+                            'added report from ${_emailController.text} successfully');
+                      });
+                      Navigator.pushNamed(context, HomePage.id);
+                    },
+                    colour: const Color.fromARGB(255, 84, 160, 56),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

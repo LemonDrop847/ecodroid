@@ -32,8 +32,8 @@ class _mapsPageState extends State<mapsPage> {
       backgroundColor: const Color.fromARGB(255, 52, 71, 68),
       // ignore: prefer_const_constructors
       appBar: AppBar(
-        elevation: 1,
-        backgroundColor: Color.fromARGB(49, 91, 91, 91),
+        elevation: 0,
+        backgroundColor: const Color.fromARGB(0, 0, 0, 0),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -89,7 +89,6 @@ class FireMap extends StatefulWidget {
 }
 
 class _FireMapState extends State<FireMap> {
-  late GoogleMapController _mapController;
   late TextEditingController _latitudeController, _longitudeController;
 
   // firestore init
@@ -130,7 +129,7 @@ class _FireMapState extends State<FireMap> {
         Stack(
           children: [
             Container(
-              height: 624,
+              height: 576,
               width: 450,
               padding: const EdgeInsets.all(10),
               child: GoogleMap(
@@ -152,8 +151,8 @@ class _FireMapState extends State<FireMap> {
               ),
             ),
             const Positioned(
-              top: 297,
-              left: 170,
+              top: 273,
+              left: 167,
               child: Center(
                 child: Icon(
                   size: 30,
@@ -164,40 +163,65 @@ class _FireMapState extends State<FireMap> {
             ),
           ],
         ),
-        Positioned(
-          bottom: 10,
-          right: 10,
-          left: 10,
-          child: InkWell(
-            onTap: () => _addPoint(poslat!, poslong!),
-            child: Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
-              decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 46, 140, 17),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        offset: const Offset(0, 9),
-                        blurRadius: 20,
-                        spreadRadius: 3)
-                  ]),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.pin_drop,
+        InkWell(
+          onTap: () => _addPoint(poslat!, poslong!),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+            decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 46, 140, 17),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(0, 9),
+                      blurRadius: 20,
+                      spreadRadius: 3)
+                ]),
+            child: Row(
+              children: const [
+                Icon(
+                  Icons.pin_drop,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Add Sapling Position",
+                  style: TextStyle(
+                    fontSize: 16,
                     color: Colors.white,
+                    fontFamily: 'Oswald',
                   ),
-                  Text(
-                    "Add Sapling Position",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontFamily: 'Oswald',
-                    ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () => _addBluePoint(poslat!, poslong!),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+            decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 25, 0, 255),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      offset: const Offset(0, 9),
+                      blurRadius: 20,
+                      spreadRadius: 3)
+                ]),
+            child: Row(
+              children: const [
+                Icon(
+                  Icons.pin_drop,
+                  color: Colors.white,
+                ),
+                Text(
+                  "Add Plantation Drive",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontFamily: 'Oswald',
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -207,7 +231,6 @@ class _FireMapState extends State<FireMap> {
 
   void onMapCreated(GoogleMapController controller) {
     setState(() {
-      _mapController = controller;
 //      _showHome();
       //start listening after map is created
       stream.listen((List<DocumentSnapshot> documentList) {
@@ -226,13 +249,39 @@ class _FireMapState extends State<FireMap> {
     });
   }
 
+  void _addBluePoint(double lat, double lng) {
+    GeoFirePoint geoFirePoint = geo.point(latitude: lat, longitude: lng);
+    _firestore
+        .collection('plantations')
+        .add({'longitude': lng, 'latitude': lat}).then((_) {
+      // ignore: avoid_print
+      print('added ${geoFirePoint.hash} successfully');
+    });
+  }
+
   void _addMarker(double lat, double lng) {
     final id = MarkerId(lat.toString() + lng.toString());
     final marker = Marker(
       markerId: id,
       position: LatLng(lat, lng),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
-      infoWindow: InfoWindow(title: 'Tree Location', snippet: '$lat,$lng'),
+      infoWindow: const InfoWindow(
+          title: 'Tree Location', snippet: 'Current Status: Healthy'),
+    );
+
+    setState(() {
+      markers[id] = marker;
+    });
+  }
+
+  void _addBlueMarker(double lat, double lng) {
+    final id = MarkerId(lat.toString() + lng.toString());
+    final marker = Marker(
+      markerId: id,
+      position: LatLng(lat, lng),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+      infoWindow: const InfoWindow(
+          title: 'Plantation Drive', snippet: 'Status: Coming Up'),
     );
 
     setState(() {
@@ -242,6 +291,8 @@ class _FireMapState extends State<FireMap> {
 
   final CollectionReference _collectionRef =
       FirebaseFirestore.instance.collection('locations');
+  final CollectionReference _collectionRef2 =
+      FirebaseFirestore.instance.collection('plantations');
 
   Future<void> _updateMarkers(List<DocumentSnapshot> documentList) async {
     QuerySnapshot querySnapshot = await _collectionRef.get();
@@ -253,6 +304,17 @@ class _FireMapState extends State<FireMap> {
       double latitude = allData[i].values.first;
       double longitude = allData[i].values.last;
       _addMarker(latitude, longitude);
+    }
+
+    QuerySnapshot querySnapshot2 = await _collectionRef2.get();
+    final allData2 = querySnapshot2.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+    for (int i = 0; i < allData2.length; i++) {
+      double latitude = allData2[i].values.first;
+      double longitude = allData2[i].values.last;
+      _addBlueMarker(latitude, longitude);
     }
   }
 }

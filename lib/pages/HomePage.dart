@@ -1,15 +1,9 @@
-import 'dart:async';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:geoflutterfire2/geoflutterfire2.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rxdart/rxdart.dart';
 
-import '../components/buttondecor.dart';
 import 'MapsPage.dart';
 import 'ProfilePage.dart';
 import 'ReportPage.dart';
+import 'RewardsPage.dart';
 
 class HomePage extends StatelessWidget {
   static const String id = 'home_page';
@@ -57,7 +51,7 @@ class _homePageState extends State<homePage> {
           ],
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -158,7 +152,7 @@ class _homePageState extends State<homePage> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, ReportPage.id);
+                Navigator.pushNamed(context, RewardsPage.id);
               },
               child: Container(
                 padding:
@@ -199,9 +193,7 @@ class _homePageState extends State<homePage> {
               height: 50,
             ),
             InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, ReportPage.id);
-              },
+              onTap: () {},
               child: Container(
                 width: 400,
                 padding:
