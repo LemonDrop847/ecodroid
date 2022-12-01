@@ -144,7 +144,7 @@ class _reportPageState extends State<reportPage> {
                 height: 10,
               ),
               const Text(
-                "Subject",
+                "Description",
                 style: TextStyle(
                   fontSize: 23,
                   color: Colors.white,
